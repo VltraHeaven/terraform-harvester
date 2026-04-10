@@ -1,0 +1,32 @@
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+# These contain sensitive information (secrets, passwords, IPs) in plain text.
+# They should be stored in a remote backend, NOT in your repository.
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+crash.*.log
+
+# Exclude override files
+# These are used for local testing and shouldn't be shared.
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Include bundler and manual provider downloads
+.terraformrc
+terraform.rc
+
+# Ignore variables files
+# It is best practice to keep secrets in .tfvars files and ignore them.
+*.tfvars
+*.tfvars.json
+
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc
