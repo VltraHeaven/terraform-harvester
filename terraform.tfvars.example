@@ -1,0 +1,42 @@
+kconfig                 = ""
+download_image          = true
+image_name              = ""
+image_namespace         = ""
+image_storageclass      = "harvester-longhorn"
+new_image = {
+  name         = "ubuntu24"
+  display_name = "noble-server-cloudimg-amd64.img"
+  source_type  = "download"
+  url          = "https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img"
+}
+namespace               = ""
+harvester_net           = ""
+harvester_net_namespace = ""
+cluster_name            = ""
+ssh_user                = ""
+cloud_config_user_data  = <<-EOF
+    #cloud-config
+    package_update: true
+    packages:
+      - qemu-guest-agent
+      - iptables
+    runcmd:
+      - [systemctl, enable, qemu-guest-agent.service]
+      - [systemctl, start, qemu-guest-agent.service]
+    users:
+    - name: root
+      ssh_pwauth: True
+      chpasswd: { expire: False }
+      ssh_authorized_keys:
+        - 
+      lock_passwd: false
+      shell: /bin/bash
+    - name: audissm
+      ssh_pwauth: True
+      chpasswd: { expire: False }
+      sudo: ALL=(ALL) NOPASSWD:ALL
+      ssh_authorized_keys:
+        - 
+      lock_passwd: false
+      shell: /bin/bash
+    EOF
