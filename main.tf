@@ -49,8 +49,8 @@ resource "harvester_virtualmachine" "vm" {
   depends_on = [data.harvester_image.image]
 
   provisioner "local-exec" {
-  interpreter = ["/bin/bash", "-c"]
-  command     = <<-EOT
+    interpreter = ["/bin/bash", "-c"]
+    command     = <<-EOT
     for i in $(seq 1 30); do
       IP=$(kubectl get vmi ${var.vm_prefix}-${count.index} -n ${var.namespace} \
         -o jsonpath='{.status.interfaces[0].ipAddress}' 2>/dev/null)

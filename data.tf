@@ -11,3 +11,10 @@ data "harvester_network" "vm_net" {
 data "harvester_storageclass" "longhorn" {
   name = var.image_storageclass
 }
+
+data "harvester_virtualmachine" "vm" {
+  count      = var.vm_count
+  depends_on = [harvester_virtualmachine.vm]
+  name       = resource.harvester_virtualmachine.vm[count.index].name
+  namespace  = var.namespace
+}
