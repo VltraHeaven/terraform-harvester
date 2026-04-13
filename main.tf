@@ -47,4 +47,21 @@ resource "harvester_virtualmachine" "vm" {
     bus  = "usb"
   }
   depends_on = [data.harvester_image.image]
+
+  provisioner "local-exec" {
+  interpreter = ["/bin/bash", "-c"]
+  command     = <<-EOT
+    for i in $(seq 1 30); do
+      IP=$(kubectl get vmi ${var.vm_prefix}-${count.index} -n ${var.namespace} \
+        -o jsonpath='{.status.interfaces[0].ipAddress}' 2>/dev/null)
+      if [[ -n "$IP" && "$IP" != "<none>" ]]; then
+        echo "VM IP: $IP"
+        exit 0
+      fi
+      echo "Waiting for IP... attempt $i"
+      sleep 10
+    done
+    echo "Timed out waiting for IP"
+    exit 1
+  EOT
 }
