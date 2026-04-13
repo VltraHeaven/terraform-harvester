@@ -19,16 +19,19 @@ variable "download_image" {
 variable "image_name" {
   type        = string
   description = "Name of existing vm image"
+  default = null
 }
 
 variable "image_namespace" {
   type        = string
   description = "Namespace containing existing vm image"
+  default = null
 }
 
 variable "image_storageclass" {
   type        = string
   description = "StorageClass of existing vm image"
+  default = null
 }
 
 variable "new_image" {
@@ -52,9 +55,9 @@ variable "namespace" {
   description = "Harvester resource namespace"
 }
 
-variable "cluster_name" {
+variable "machine_name_prefix" {
   type        = string
-  description = "RKE2 cluster name"
+  description = "VM name prefix"
 }
 
 variable "harvester_net" {

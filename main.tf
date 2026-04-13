@@ -1,5 +1,5 @@
 resource "harvester_cloudinit_secret" "cloud-config" {
-  name         = "cloud-config-${var.cluster_name}"
+  name         = "cloud-config-${var.machine_name_prefix}"
   namespace    = var.namespace
   user_data    = var.cloud_config_user_data
   network_data = ""
@@ -7,9 +7,9 @@ resource "harvester_cloudinit_secret" "cloud-config" {
 
 resource "harvester_virtualmachine" "cp_node" {
   count       = 3
-  name        = "${var.cluster_name}-${count.index}"
+  name        = "${var.machine_name_prefix}-${count.index}"
   namespace   = var.namespace
-  description = "${var.cluster_name} RKE2 cluster"
+  description = "${var.machine_name_prefix} RKE2 cluster"
 
   tags = {
     ssh-user = var.ssh_user
