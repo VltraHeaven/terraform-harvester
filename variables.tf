@@ -70,9 +70,11 @@ variable "harvester_net_namespace" {
 variable "ssh_user" {
   type        = string
   description = "Account used to connect to vms"
+  default = null
 }
 
 variable "cloud_config_user_data" {
   type        = string
   description = "cloud-init user-data"
+  default = null
 }
