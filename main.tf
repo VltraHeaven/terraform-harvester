@@ -9,7 +9,7 @@ resource "harvester_virtualmachine" "vm" {
   count       = var.vm_count
   name        = "${var.vm_prefix}-${count.index}"
   namespace   = var.namespace
-  description = "${var.machine_name_prefix} RKE2 cluster"
+  description = var.vm_description
 
   tags = {
     ssh-user = var.ssh_user

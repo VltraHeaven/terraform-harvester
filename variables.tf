@@ -19,19 +19,19 @@ variable "download_image" {
 variable "image_name" {
   type        = string
   description = "Name of existing vm image"
-  default = null
+  default = ""
 }
 
 variable "image_namespace" {
   type        = string
   description = "Namespace containing existing vm image"
-  default = null
+  default = ""
 }
 
 variable "image_storageclass" {
   type        = string
   description = "StorageClass of existing vm image"
-  default = null
+  default = ""
 }
 
 variable "new_image" {
@@ -65,6 +65,13 @@ variable "vm_prefix" {
   description = "VM name prefix"
 }
 
+variable "vm_description" {
+  type        = string
+  description = "Description for provisioned VMs"
+  default = ""
+}
+
+
 variable "harvester_net" {
   type        = string
   description = "Harvester network name"
@@ -78,11 +85,11 @@ variable "harvester_net_namespace" {
 variable "ssh_user" {
   type        = string
   description = "Account used to connect to vms"
-  default = null
+  default = ""
 }
 
 variable "cloud_config_user_data" {
   type        = string
   description = "cloud-init user-data"
-  default = null
+  default = ""
 }
