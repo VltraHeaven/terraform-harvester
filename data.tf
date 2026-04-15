@@ -20,8 +20,8 @@ data "harvester_virtualmachine" "vm" {
 }
 
 data "harvester_loadbalancer" "vm_lb" {
-  count = resource.harvester_loadbalancer.vm_lb.count
-  name = resource.harvester_loadbalancer.vm_lb.name
-  namespace = var.namespace
-  depends_on = [ harvester_loadbalancer.vm_lb ]
+  count      = resource.harvester_loadbalancer.vm_lb.count
+  name       = resource.harvester_loadbalancer.vm_lb.name
+  namespace  = var.namespace
+  depends_on = [harvester_loadbalancer.vm_lb]
 }

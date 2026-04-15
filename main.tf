@@ -14,7 +14,7 @@ resource "harvester_virtualmachine" "vm" {
   labels = var.vm_labels
 
   tags = {
-    ssh-user = var.ssh_user
+    ssh-user          = var.ssh_user
     terraform-project = var.vm_prefix
   }
 
@@ -72,7 +72,7 @@ resource "harvester_virtualmachine" "vm" {
 
 
 resource "harvester_loadbalancer" "vm_lb" {
-  count = var.create_lb ? 1 : 0
+  count         = var.create_lb ? 1 : 0
   name          = "${var.vm_prefix}-lb"
   namespace     = var.namespace
   workload_type = "vm"
@@ -88,11 +88,11 @@ resource "harvester_loadbalancer" "vm_lb" {
     values = [var.vm_prefix]
   }
   healthcheck {
-    port = var.lb_listener_backend_port
-    period_seconds = var.lb_healthcheck_period_seconds
-    timeout_seconds = var.lb_healthcheck_timeout_seconds
+    port              = var.lb_listener_backend_port
+    period_seconds    = var.lb_healthcheck_period_seconds
+    timeout_seconds   = var.lb_healthcheck_timeout_seconds
     failure_threshold = var.lb_healthcheck_failure_threshold
     success_threshold = var.lb_healthcheck_success_threshold
   }
-  depends_on = [ resource.harvester_virtualmachine.vm ]
+  depends_on = [resource.harvester_virtualmachine.vm]
 }

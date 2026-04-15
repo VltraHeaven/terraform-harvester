@@ -130,55 +130,55 @@ variable "cloud_config_network_data" {
 }
 
 variable "create_lb" {
-  type = bool
+  type        = bool
   description = "Sepcify true or false to create a VM LoadBalancer"
-  default = false
+  default     = false
 }
 
 variable "lb_ipam" {
-  type = string
+  type        = string
   description = "Specify how the LoadBalancer gets it's IP ('dhcp' or 'pool')"
-  default = "dhcp"
+  default     = "dhcp"
 }
 
 variable "lb_listener_backend_port" {
-  type = number
+  type        = number
   description = "Listening port on backend VMs"
-  default = 443
+  default     = 443
 }
 
 variable "lb_listener_port" {
-  type = number
+  type        = number
   description = "Listening port on LoadBalancer"
-  default = 443
+  default     = 443
 }
 
 variable "lb_protocol" {
-  type = string
+  type        = string
   description = "Protocol of routed traffic"
-  default = "TCP"
+  default     = "TCP"
 }
 
 variable "lb_healthcheck_period_seconds" {
-  type = number
+  type        = number
   description = "Seconds between healthchecks"
-  default = 5
+  default     = 5
 }
 
 variable "lb_healthcheck_timeout_seconds" {
-  type = number
+  type        = number
   description = "Seconds of timeout duration"
-  default = 3
+  default     = 3
 }
 
 variable "lb_healthcheck_failure_threshold" {
-  type = number
+  type        = number
   description = "Number of consecutive failures before timeout"
-  default = 3
+  default     = 3
 }
 
 variable "lb_healthcheck_success_threshold" {
-  type = number
+  type        = number
   description = "Number of successes before traffic is routed"
-  default = 1
+  default     = 1
 }
