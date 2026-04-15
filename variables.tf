@@ -65,6 +65,12 @@ variable "vm_prefix" {
   description = "VM name prefix"
 }
 
+variable "vm_labels" {
+  type = map(string)
+  description = "List of 'key=value' pair labels"
+  default = null
+}
+
 variable "vm_description" {
   type        = string
   description = "Description for provisioned VMs"
@@ -122,3 +128,4 @@ variable "cloud_config_network_data" {
   description = "cloud-init network-data"
   default     = ""
 }
+
