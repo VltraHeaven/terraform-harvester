@@ -15,7 +15,7 @@ resource "harvester_virtualmachine" "vm" {
 
   tags = {
     ssh-user = var.ssh_user
-    terraform-harvester/project = var.vm_prefix
+    terraform-project = var.vm_prefix
   }
 
   cloudinit {
@@ -73,7 +73,7 @@ resource "harvester_virtualmachine" "vm" {
 
 resource "harvester_loadbalancer" "vm_lb" {
   count = var.create_lb ? 1 : 0
-  name          = "${vm_prefix}-lb"
+  name          = "${var.vm_prefix}-lb"
   namespace     = var.namespace
   workload_type = "vm"
   ipam          = var.lb_ipam
