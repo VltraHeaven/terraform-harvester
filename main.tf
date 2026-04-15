@@ -84,7 +84,7 @@ resource "harvester_loadbalancer" "vm_lb" {
     name         = "${var.vm_prefix}-${var.lb_protocol}"
   }
   backend_selector {
-    key    = "terraform-harvester/project"
+    key    = "tag.harvesterhci.io/terraform-project"
     values = [var.vm_prefix]
   }
   healthcheck {
