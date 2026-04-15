@@ -78,7 +78,7 @@ variable "vm_description" {
 }
 
 variable "vm_cpu" {
-  type        = string
+  type        = number
   description = "VM CPU core count"
   default     = 4
 }
