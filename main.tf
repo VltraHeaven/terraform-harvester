@@ -10,7 +10,7 @@ resource "harvester_virtualmachine" "vm" {
   name        = "${var.vm_prefix}-${count.index}"
   namespace   = var.namespace
   description = var.vm_description
-  
+
   labels = var.vm_labels
 
   tags = {

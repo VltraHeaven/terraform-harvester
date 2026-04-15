@@ -66,9 +66,9 @@ variable "vm_prefix" {
 }
 
 variable "vm_labels" {
-  type = map(string)
+  type        = map(string)
   description = "List of 'key=value' pair labels"
-  default = null
+  default     = null
 }
 
 variable "vm_description" {
