@@ -16,8 +16,9 @@ Tests live in the `test/` directory and are written using [Terratest](https://te
 | `HARVESTER_KUBECONFIG` | Yes | Path to the Harvester kubeconfig file |
 | `HARVESTER_NAMESPACE` | No | Namespace to deploy into (default: `default`) |
 | `HARVESTER_NETWORK` | Yes | Name of the Harvester VM network to attach VMs to |
-| `HARVESTER_NETWORK_NAMESPACE` | No | Namespace of the network (defaults to `HARVESTER_NAMESPACE`) |
+| `HARVESTER_NETWORK_NAMESPACE` | Yes | Namespace of the Harvester VM network |
 | `HARVESTER_IMAGE_DISPLAY_NAME` | Yes* | Display name of an existing VM image (required when `download_image=false`) |
+| `HARVESTER_IMAGE_NAMESPACE` | No | Namespace containing existing VM image (defaults to `HARVESTER_NAMESPACE` ) |
 
 ## Running the Tests
 
@@ -35,6 +36,7 @@ These validate HCL correctness. They require provider access to resolve data sou
 ```bash
 export HARVESTER_KUBECONFIG=/path/to/harvester.yaml
 export HARVESTER_NETWORK=vlan100
+export HARVESTER_NETWORK_NAMESPACE=harvester-public
 export HARVESTER_IMAGE_DISPLAY_NAME="noble-server-cloudimg-amd64.img"
 
 go test -v -run "TestPlan" -timeout 10m ./...

@@ -26,9 +26,8 @@ func getBaseVars(t *testing.T) map[string]interface{} {
 	require.NotEmpty(t, harvesterNet, "HARVESTER_NETWORK env var must be set")
 
 	harvesterNetNS := os.Getenv("HARVESTER_NETWORK_NAMESPACE")
-	if harvesterNetNS == "" {
-		harvesterNetNS = namespace
-	}
+	require.NotEmpty(t, harvesterNetNS, "HARVESTER_NETWORK_NAMESPACE env var must be set")
+
 
 	imageNamespace := os.Getenv("HARVESTER_IMAGE_NAMESPACE")
 	if imageNamespace == "" {
