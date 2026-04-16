@@ -55,7 +55,7 @@ resource "harvester_virtualmachine" "vm" {
     interpreter = ["/bin/bash", "-c"]
     command     = <<-EOT
     for i in $(seq 1 30); do
-      IP=$(kubectl get vmi ${var.vm_prefix}-${count.index} -n ${var.namespace} \
+      IP=$(kubectl get vmi --kubeconfig=${var.kconfig} ${var.vm_prefix}-${count.index} -n ${var.namespace} \
         -o jsonpath='{.status.interfaces[0].ipAddress}' 2>/dev/null)
       if [[ -n "$IP" && "$IP" != "<none>" ]]; then
         echo "VM IP: $IP"
