@@ -4,5 +4,9 @@ output "vm_ip_addresses" {
 }
 
 output "vm_lb_ip_address" {
-  value      = var.create_lb ? [for lb in data.harvester_loadbalancer.vm_lb : "${lb.ip_address}"] : null
+  value = var.create_lb ? [for lb in data.harvester_loadbalancer.vm_lb : "${lb.name}: ${lb.ip_address}"] : null
+}
+
+output "vm_count" {
+  value = var.vm_count
 }
